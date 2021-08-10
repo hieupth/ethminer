@@ -67,7 +67,8 @@ Check our [samples](docs/POOL_EXAMPLES_ETH.md) to see how to connect to differen
 
 Requirements for building and launching in Docker:
 - Docker 19.x and `nvidia-container-toolkit` installed
-- Nvidia driver supporting CUDA 10.1
+- Nvidia driver supporting CUDA 11.2.0
+- Manually [download Boost 1.66.0](https://boostorg.jfrog.io/native/main/release/1.66.0/source/boost_1_66_0.7z) and save it to `ethminer` directory. _Reason for this is that site Hunter is trying to use is down, see [this discussion](https://stackoverflow.com/questions/67362965/boost-binary-forbidden-downloaded-via-hunter)_.
 
 First clone this repository and then build a local Docker image,
 
