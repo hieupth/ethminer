@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.2-devel-ubuntu18.04 AS build
+FROM nvidia/cuda:11.2.0-devel-ubuntu18.04 AS build
 
 WORKDIR /
 
@@ -15,6 +15,10 @@ RUN apt-get update && \
 COPY . /ethminer
 WORKDIR /ethminer
 
+# Manually copy Boost sources
+RUN mkdir -p /root/.hunter/_Base/Download/Boost/1.66.0/075d0b4 && \
+    mv boost_1_66_0.7z /root/.hunter/_Base/Download/Boost/1.66.0/075d0b4/
+
 # Build. Use all cores.
 RUN mkdir build; \
     cd build; \
@@ -22,7 +26,7 @@ RUN mkdir build; \
     cmake --build . -- -j; \
     make install;
 
-FROM nvidia/cuda:10.2-base-ubuntu18.04
+FROM nvidia/cuda:11.2.0-base-ubuntu18.04
 
 # Copy only executable from build
 COPY --from=build /usr/local/bin/ethminer /usr/local/bin/
