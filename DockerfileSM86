@@ -16,8 +16,8 @@ COPY . /ethminer
 WORKDIR /ethminer
 
 # Manually copy Boost sources
-RUN mkdir -p /root/.hunter/_Base/Download/Boost/1.66.0/075d0b4 && \
-    mv boost_1_66_0.7z /root/.hunter/_Base/Download/Boost/1.66.0/075d0b4/
+# RUN mkdir -p /root/.hunter/_Base/Download/Boost/1.66.0/075d0b4 && \
+#     mv boost_1_66_0.7z /root/.hunter/_Base/Download/Boost/1.66.0/075d0b4/
 
 # Build. Use all cores.
 RUN mkdir build; \
